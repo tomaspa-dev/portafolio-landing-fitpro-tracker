@@ -1,0 +1,49 @@
+---
+import { Instagram, Twitter, Youtube } from 'lucide-react';
+import WaitlistForm from './WaitlistForm.tsx';
+---
+
+<footer class="border-t border-white/5 bg-surface/40">
+  <div class="container-md grid gap-10 py-14 md:grid-cols-3">
+    <div>
+      <p class="font-display text-lg font-bold text-white">
+        FitPro<span class="text-accent">Tracker</span>
+      </p>
+      <p class="mt-3 max-w-xs text-sm text-slate-400">
+        Tu entrenador personal, monitor de sueño y diario de salud en un solo reloj.
+      </p>
+      <div class="mt-5 flex gap-3">
+        <a href="#" aria-label="Instagram" class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-slate-400 transition-colors hover:border-accent/60 hover:text-accent">
+          <Instagram class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <a href="#" aria-label="X / Twitter" class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-slate-400 transition-colors hover:border-accent/60 hover:text-accent">
+          <Twitter class="h-4 w-4" aria-hidden="true" />
+        </a>
+        <a href="#" aria-label="YouTube" class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-slate-400 transition-colors hover:border-accent/60 hover:text-accent">
+          <Youtube class="h-4 w-4" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-white">Explorar</p>
+      <ul class="mt-4 space-y-3 text-sm text-slate-400">
+        <li><a href="#features" class="transition-colors hover:text-accent">Funciones</a></li>
+        <li><a href="#demo" class="transition-colors hover:text-accent">Demo interactiva</a></li>
+        <li><a href="#plans" class="transition-colors hover:text-accent">Comparativa de planes</a></li>
+        <li><a href="#faq" class="transition-colors hover:text-accent">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-widest text-white">Únete a la lista de espera</p>
+      <p class="mt-4 text-sm text-slate-400">Novedades y descuento de lanzamiento directamente en tu correo.</p>
+      <div class="mt-4">
+        <WaitlistForm client:load />
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/5 py-6">
+    <p class="container-md text-center text-xs text-slate-400">
+      © 2026 FitPro Tracker. Todos los derechos reservados. Landing demo — proyecto de portfolio.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-bg-dark text-slate-300 font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-white;
+  }
+  ::selection {
+    @apply bg-accent text-bg-dark;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* El contenido debajo del hero se oculta solo cuando hay JS (evita flash con CSS de entrada) */
+html.js [data-reveal],
+html.js [data-hero-cascade] {
+  opacity: 0;
+}
+html.js.motion-reduce [data-reveal],
+html.js.motion-reduce [data-hero-cascade] {
+  opacity: 1;
+}
+
+@layer components {
+  .container-md {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-accent;
+  }
+  .card {
+    @apply rounded-2xl border border-slate-100/10 bg-surface;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-colors;
+  }
+  .btn-accent {
+    @apply btn bg-accent text-bg-dark hover:bg-cyan-300;
+  }
+  .btn-ghost {
+    @apply btn border border-slate-100/15 bg-transparent text-white hover:border-accent/60 hover:text-accent;
+  }
+  .glow {
+    box-shadow: 0 0 60px rgba(74, 222, 128, 0.14);
+  }
+  .glow-strong {
+    box-shadow: 0 0 80px rgba(74, 222, 128, 0.28);
+  }
+  .btn-accent {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-accent::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+    transform: translateX(-160%);
+    pointer-events: none;
+  }
+  .btn-accent:hover::after {
+    transform: translateX(160%);
+    transition: transform 0.7s ease;
+  }
+  .text-gradient-accent {
+    background: linear-gradient(90deg, #4ade80, #bef264, #4ade80);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-x 6s ease infinite;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 75%);
+  }
+  .marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: 3rem;
+    animation: marquee 26s linear infinite;
+  }
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-gradient-accent,
+    .marquee-track {
+      animation: none;
+    }
+  }
+}
